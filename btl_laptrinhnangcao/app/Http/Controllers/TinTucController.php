@@ -13,11 +13,11 @@ use Carbon\Carbon;
 class TinTucController extends Controller
 {
     public function getDanhSach(){
-        $tintuc= TinTuc::orderBy('id','DESC')->get();//desc giam dan
+        $tintuc= TinTuc::orderBy('id','DESC')->paginate(5);//desc giam dan
         return view('admin.tintuc.DsTinTuc', ['tintuc'=>$tintuc]);
     }
     public function getGVDanhSach($id){
-        $tintuc= TinTuc::orderBy('id','DESC')->where('id_user','=',$id)->get();//desc giam dan
+        $tintuc= TinTuc::orderBy('id','DESC')->where('id_user','=',$id)->paginate(5);//desc giam dan
         return view('giangvien.tintuc.DsTinTuc', ['tintuc'=>$tintuc]);
     }
     public function getThem(){
@@ -127,12 +127,10 @@ class TinTucController extends Controller
         return redirect('admin/tintuc/danhsach')->with('thongbao','Đã xóa');
     }
 
-
-    public function getLDDanhSach(){
-        $tintuc= TinTuc::orderBy('id','DESC')->get();//desc giam dan
+    public function getLDDanhSach($id){
+        $tintuc= TinTuc::orderBy('id','DESC')->where('id_user','=',$id)->paginate(5);//desc giam dan
         return view('lanhdao.tintuc.DsTinTuc', ['tintuc'=>$tintuc]);
     }
-
     public function getLDThem(){
         $loaitin = LoaiTin::all();
         return view('lanhdao.tintuc.ThemTinTuc', ['loaitin'=>$loaitin]);

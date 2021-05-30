@@ -9,7 +9,6 @@
                 <table class="text-center table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Tiêu đề</th>
                         <th>Email</th>
                         <th>Nội dung</th>
@@ -20,7 +19,6 @@
                     <tbody>
                     @foreach ($tinnhancho as $tl)
                         <tr>
-                            <td>{{$tl->id}}</td>
                             <td>{{$tl->name}}</td>
                             <td>{{$tl->email}}</td>
                             <td>{{$tl->noi_dung}}</td>
@@ -34,6 +32,9 @@
                     @endforeach
                     </tbody>
                 </table>
+                <div class="pagination justify-content-center">
+                    {!! $tinnhancho->links() !!}
+                </div>
             </div>
         </div>
     </div>

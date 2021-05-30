@@ -14,7 +14,6 @@
                 <table class="text-center table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Tên khóa học</th>
                         <th>Xóa</th>
                         <th>Sửa</th>
@@ -23,7 +22,6 @@
                     <tbody>
                     @foreach ($khoahoc as $tl)
                         <tr>
-                            <td>{{$tl->id}}</td>
                             <td>{{$tl->nien_khoa}}</td>
                             <td><a href="admin/vitri/xoa/{{$tl->id}}"><i class="far fa-trash-alt"></i></a></td>
                             <td><a href="admin/vitri/sua/{{$tl->id}}"><i class="far fa-edit"></i></a></td>

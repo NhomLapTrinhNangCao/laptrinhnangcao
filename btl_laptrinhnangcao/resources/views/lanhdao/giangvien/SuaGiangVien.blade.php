@@ -1,7 +1,7 @@
 @extends('lanhdao.layout.Index')
 @section('content')
     <div class="col-sm-4">
-        <a href="lanhdao/giangvien/chon">
+        <a href="lanhdao/giangvien/thongtin/{{Auth::user()->giangvien->id}}">
             <button type="button" class="btn btn-info add-new">Quay lại</button>
         </a>
     </div>

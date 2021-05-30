@@ -204,85 +204,6 @@ class GiangVienController extends Controller
 
 
 
-    public function getLDChon(){
-        $vitri = ViTri::all();
-        return view('lanhdao.giangvien.DsViTri', ['vitri'=>$vitri]);
-    }
-
-    public function postLDChon(Request $request){
-        return redirect('lanhdao/giangvien/danhsach/'.$request->noi_cong_tac);
-    }
-
-    public function getLDDanhSach($id){
-        $giangvien = GiangVien::where('id_vi_tri','=',$id)->get();
-        return view('lanhdao.giangvien.DsGiangVien',['giangvien'=>$giangvien,'id'=>$id]);
-    }
-
-    public function getLDThem($id){
-        $vitri=ViTri::find($id);
-        return view('lanhdao.giangvien.ThemGiangVien',['vitri'=>$vitri,'id'=>$id]);
-    }
-
-    public function postLDThem(Request $request,$id){
-        $this->validate($request,[
-            'name' => 'required|min:3',
-            'email' => 'required|email',
-            'password' => 'required|min:3|max:32',
-            'passwordAgain' => 'required|same:password',
-            'quyen' => 'required'
-        ],[
-            'name.required' => 'Bạn chưa nhập tên người dùng',
-            'name.min' => 'Tên người dùng phải có ít nhất 3 ký tự',
-            'email.required' => 'Bạn chưa nhập email',
-            'email.email' => 'Bạn chưa nhập đúng định dạng email',
-            'email.unique' => 'Email đã tồn tại',
-            'password.required' => 'Bạn chưa nhập mật khẩu',
-            'password.min' => 'mật khẩu phải có độ dài từ 3 đến 255 ký tự',
-            'password.max' => 'mật khẩu phải có độ dài từ 3 đến 255 ký tự',
-            'passwordAgain.required' => 'Bạn chưa nhập lại mật khẩu',
-            'passwordAgain.same' => 'Mật khẩu không khớp',
-            'quyen.required' => 'Bạn chưa nhập quyen quan tri'
-
-        ]);
-
-        $user = new User;
-        $user->name = $request->name;
-
-        $user->quyen = $request->quyen;
-        $user->password = bcrypt($request->password);
-        if($request->hasFile('hinh')){
-
-            $file = $request->file('hinh');
-            $duoi = $file->getClientOriginalExtension();
-            if($duoi != 'jpg' && $duoi != 'png' && $duoi != 'jpeg' ){
-                return redirect('lanhdao/giangvien/them'.$id)->with('loi','Bạn chỉ được chọn file có đuôi jpg, png, jpeg');
-            }
-            $name = $file->getClientOriginalName();
-            $hinh = Str::random(4)."_".$name;
-            while(file_exists("upload/taikhoan/".$hinh)){
-                $hinh = Str::random(4)."_".$name;
-            }
-            $file->move("upload/taikhoan/", $hinh);
-            $user->hinh = $hinh;
-        }
-        else{
-            $user->hinh="avt mac_dinh.png";
-        }
-        if((User::where('email','=',$request->email))->exists())
-        {
-            return redirect('lanhdao/giangvien/them'.$id)->with('loi','Đã có vị trí chức vụ này');
-        }
-        $user->email = $request->email;
-        $user->save();
-        $giangvien=new GiangVien;
-        $giangvien->id_user=$user->id;
-        $giangvien->id_vi_tri=$id;
-        $giangvien->ms_giang_vien=$request->ms_giang_vien;
-        $giangvien->save();
-        return redirect('lanhdao/giangvien/them/'.$id)->with('thongbao','Thêm Thành Công');
-    }
-
-
     public function getLDSua($id){
         $giangvien = GiangVien::find($id);
         $vitri=ViTri::all();
@@ -341,17 +262,7 @@ class GiangVienController extends Controller
         $user->save();
         return redirect('lanhdao/giangvien/sua/'.$id)->with('thongbao','Bạn đã sửa thành công');
     }
-    public function getLDXoa($id){
-        $giangvien = GiangVien::find($id);
-        $user = User::find($giangvien->id_user);
-        $binhluan = BinhLuan::where('id_users','=',$id);
-        $binhluan->delete();
-        $tintuc = TinTuc::where('id_user','=',$id);
-        $tintuc->delete();
-        $giangvien->delete() ;
-        $user->delete();
-        return redirect('lanhdao/giangvien/chon')->with('thongbao','Xóa thành công');
-    }
+
 
 
     public function getGVSua($id){

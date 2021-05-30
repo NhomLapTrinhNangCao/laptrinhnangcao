@@ -1,7 +1,7 @@
 @extends('giangvien.layout.Index')
 @section('content')
     <div class="col-sm-4">
-        <a href="giangvien/tintuc/danhsach">
+        <a href="giangvien/tintuc/danhsach/{{Auth::user()->id}}">
             <button type="button" class="btn btn-info add-new">Quay lại</button>
         </a>
     </div>

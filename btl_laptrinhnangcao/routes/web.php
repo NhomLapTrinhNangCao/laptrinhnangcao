@@ -172,7 +172,7 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
 
 Route::group(['prefix'=>'lanhdao','middleware'=>'LanhDaoLogin'],function(){
     Route::group(['prefix'=>'tintuc'],function(){
-        Route::get('danhsach','App\Http\Controllers\TinTucController@getLDDanhSach');
+        Route::get('danhsach/{id}','App\Http\Controllers\TinTucController@getLDDanhSach');
 
         Route::get('sua/{id}','App\Http\Controllers\TinTucController@getLDSua');
         Route::post('sua/{id}','App\Http\Controllers\TinTucController@postLDSua');
@@ -214,20 +214,11 @@ Route::group(['prefix'=>'lanhdao','middleware'=>'LanhDaoLogin'],function(){
 
     Route::group(['prefix' => 'giangvien'], function () {
 
-        Route::get('danhsach/{id}','App\Http\Controllers\GiangVienController@getLDDanhSach');
-
         Route::get('sua/{id}','App\Http\Controllers\GiangVienController@getLDSua');
         Route::post('sua/{id}','App\Http\Controllers\GiangVienController@postLDSua');
 
         Route::get('thongtin/{id}','App\Http\Controllers\GiangVienController@getLDThongTin');
 
-        Route::get('xoa/{id}','App\Http\Controllers\GiangVienController@getLDXoa');
-
-        Route::get('them/{id}','App\Http\Controllers\GiangVienController@getLDThem');
-        Route::post('them/{id}','App\Http\Controllers\GiangVienController@postLDThem');
-
-        Route::get('chon','App\Http\Controllers\GiangVienController@getLDChon');
-        Route::post('chon','App\Http\Controllers\GiangVienController@postLDChon');
     });
 
     Route::group(['prefix' => 'sinhvien'], function () {
@@ -341,9 +332,9 @@ Route::get('themkhach','App\Http\Controllers\PageController@getThem');
 Route::post('themkhach','App\Http\Controllers\PageController@postThem');
 Route::get('lichsuphattrien','App\Http\Controllers\PageController@getLichSu');
 Route::post('thembinhluan/{id}','App\Http\Controllers\PageController@postThemBinhLuan');
-Route::get('quenmatkhau', function (){
-   return view('pages.quenmatkhau');
-});
+Route::get('quenmatkhau','App\Http\Controllers\PageController@getQuenMatKhau');
+Route::post('quenmatkhau','App\Http\Controllers\PageController@postQuenMatKhau');
+
 Route::get('cosovatchat',function (){
     return view('pages.cosovatchat');
 });

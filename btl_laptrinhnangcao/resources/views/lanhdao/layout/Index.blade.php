@@ -39,14 +39,6 @@
             <hr class="sidebar-divider my-0">
 
 
-            <!-- Nav Item - Quản lý tài khoản giảng viên Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="lanhdao/giangvien/chon"  >
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Tài khoản giảng viên</span>
-                </a>
-            </li>
-
             <!-- Nav Item - Quản lý tài khoản sinh viên Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="lanhdao/sinhvien/chon"  >
@@ -57,7 +49,7 @@
 
             <!-- Nav Item - Tin tức Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="lanhdao/tintuc/danhsach"  >
+                <a class="nav-link collapsed" href="lanhdao/tintuc/danhsach/{{Auth::user()->id}}"  >
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Tin tức</span>
                 </a>

@@ -1,7 +1,7 @@
 @extends('admin.layout.Index')
 @section('content')
     <div class="col-sm-4">
-        <a href="admin/giangvien/chon">
+        <a href="admin/giangvien/thongtin/{{Auth::user()->id}}">
             <button type="button" class="btn btn-info add-new">Quay lại</button>
         </a>
     </div>

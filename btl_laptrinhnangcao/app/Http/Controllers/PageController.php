@@ -14,7 +14,7 @@ use App\Models\LanhDao;
 use App\Models\ViTri;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-
+use App\Jobs\SendEmail;
 class PageController extends Controller
 {
     function getTuyenSinh()
@@ -25,6 +25,8 @@ class PageController extends Controller
     function getCTTuyenSinh($id)
     {
         $tuyensinh=TuyenSinh::find($id);
+        $tuyensinh->so_luot_xem ++;
+        $tuyensinh->save();
         return view('pages.chitiettuyensinh',['tuyensinh'=>$tuyensinh]);
     }
     function getTinTuc($id)
@@ -132,5 +134,27 @@ class PageController extends Controller
         $binhluan->id_user = Auth::user()->id;
         $binhluan->save();
         return redirect('chitiettintuc/'.$id)->with('thongbao','Thêm bình luận thành công');
+    }
+    function getQuenMatKhau()
+    {
+        return view('pages.quenmatkhau');
+    }
+    public function postQuenMatKhau(Request $request){
+        $this->validate($request,[
+            'email' => 'required|email',
+        ],[
+            'email.required' => 'Bạn chưa nhập email',
+            'email.email' => 'Bạn chưa nhập đúng định dạng email',
+        ]);
+        $user=User::where('email','=',$request->email)->first();
+        $password = Str::random(6);
+        $user->password = bcrypt($password);
+        $user->save();
+        $message = [
+            'email' => $user->email,
+            'password' => $password,
+        ];
+        SendEmail::dispatch($message, $user)->delay(now()->addMinute(1));
+        return redirect('quenmatkhau')->with('thongbao','Đã gửi mật khẩu mới tới email của bạn');
     }
 }

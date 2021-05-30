@@ -49,7 +49,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="sinhvien/danhsach/{{Auth::user()->sinhvien->id_lop_hoc}}"  >
                     <i class="fas fa-fw fa-wrench"></i>
-                    <span>Danh sách sinh viên lớp</span>
+                    <span>Danh sách lớp sinh viên </span>
                 </a>
             </li>
 
@@ -110,7 +110,7 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Thông tin
                                 </a>
-                                <a class="dropdown-item" href="sinhvien/sua/{{Auth::user()->id}}">
+                                <a class="dropdown-item" href="sinhvien/sua/{{Auth::user()->sinhvien->id}}">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Cài đặt
                                 </a>

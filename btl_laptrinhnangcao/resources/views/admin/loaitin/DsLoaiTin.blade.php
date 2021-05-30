@@ -14,7 +14,6 @@
                 <table class="text-center table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Tên loại tin</th>
                         <th>Tên không dấu</th>
                         <th>Xóa</th>
@@ -24,7 +23,6 @@
                     <tbody>
                     @foreach ($loaitin as $tl)
                         <tr>
-                            <td>{{$tl->id}}</td>
                             <td>{{$tl->ten}}</td>
                             <td>{{$tl->ten_khong_dau}}</td>
                             <td><a href="admin/loaitin/xoa/{{$tl->id}}"><i class="far fa-trash-alt"></i></a></td>

@@ -40,17 +40,16 @@
                             <div class="p-5">
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-2">Quên mật khẩu ?</h1>
-                                    <p class="mb-4">Mật khẩu sẽ được gửi trở lại tài khoản của bạn</p>
+                                    <p class="mb-4">Mật khẩu sẽ được gửi trở lại email của bạn</p>
                                 </div>
-                                <form class="user">
+                                <form class="user" action="quenmatkhau" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                                     <div class="form-group">
                                         <input type="email" class="form-control form-control-user"
-                                               id="exampleInputEmail" aria-describedby="emailHelp"
+                                               name="email" aria-describedby="emailHelp"
                                                placeholder="Nhập tài khoản...">
                                     </div>
-                                    <a href="trangchu" class="btn btn-primary btn-user btn-block">
-                                        Xác nhận
-                                    </a>
+                                    <input type="submit" value="Xác nhận" class="btn btn-primary btn-user btn-block" />
                                 </form>
                                 <hr>
                                 <div class="text-center">
@@ -68,7 +67,23 @@
         </div>
 
     </div>
-
+    @if(count($errors)>0)
+        <div class="alert alert-danger">
+            @foreach($errors->all() as $err)
+                {{$err}}<br>
+            @endforeach
+        </div>
+    @endif
+    @if(session('thongbao'))
+        <div class="alert alert-success">
+            {{session('thongbao')}}
+        </div>
+    @endif
+    @if(session('loi'))
+        <div class="alert alert-success">
+            {{session('loi')}}
+        </div>
+    @endif
 </div>
 
 <!-- Bootstrap core JavaScript-->

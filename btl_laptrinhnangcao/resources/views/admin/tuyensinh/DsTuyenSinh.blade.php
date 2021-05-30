@@ -14,10 +14,8 @@
                 <table class="text-center table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Tiêu đề</th>
                         <th>Tóm tăt</th>
-                        <th>Nội dung</th>
                         <th>Số lượt xem</th>
                         <th>Mã tuyến sinh</th>
                         <th>Số chỉ tiêu</th>
@@ -29,13 +27,11 @@
                     <tbody>
                     @foreach ($tuyensinh as $tl)
                         <tr>
-                            <td>{{$tl->id}}</td>
                             <td>
                                 <p>{{$tl->tieu_de}}</p>
                                 <img width="100px" src="upload/tuyensinh/{{$tl->hinh}}">
                             </td>
                             <td>{{$tl->tom_tat}}</td>
-                            <td>{!!$tl->noi_dung!!}</td>
                             <td>{{$tl->so_luot_xem}}</td>
                             <td>{{$tl->ma_tuyen_sinh}}</td>
                             <td>{{$tl->so_chi_tieu}}</td>

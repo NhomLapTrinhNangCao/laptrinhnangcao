@@ -14,7 +14,6 @@
                 <table class="text-center table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Chức vụ</th>
                         <th>Tên lãnh đạo</th>
                         <th>Mã số giảng viên</th>
@@ -25,7 +24,6 @@
                     <tbody>
                     @foreach ($lanhdao as $tl)
                         <tr>
-                            <td>{{$tl->id}}</td>
                             <td>{{$tl->ten_chuc_vu}}</td>
                             <td>{{$tl->giangvien->user->name}}</td>
                             <td>{{$tl->giangvien->ms_giang_vien}}</td>

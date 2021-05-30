@@ -11,7 +11,7 @@ class LopHocController extends Controller
 {
     public function getDanhSach()
     {
-        $lophoc=LopHoc::all();
+        $lophoc=LopHoc::paginate(5);
         return view('admin.lophoc.DsLopHoc',['lophoc'=>$lophoc]);
     }
     public function getThem()

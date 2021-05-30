@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class TinNhanChoController extends Controller
 {
     public function getDanhSach(){
-        $tinnhancho= TinNhanCho::orderBy('id','DESC')->get();//desc giam dan
+        $tinnhancho= TinNhanCho::orderBy('id','DESC')->paginate(10);//desc giam dan
         return view('admin.tinnhancho.DsTinNhanCho', ['tinnhancho'=>$tinnhancho]);
     }
     public function getSua($id){
@@ -25,7 +25,7 @@ class TinNhanChoController extends Controller
     }
 
     public function getLDDanhSach(){
-        $tinnhancho= TinNhanCho::orderBy('id','DESC')->get();//desc giam dan
+        $tinnhancho= TinNhanCho::orderBy('id','DESC')->paginate(5);//desc giam dan
         return view('lanhdao.tinnhancho.DsTinNhanCho', ['tinnhancho'=>$tinnhancho]);
     }
     public function getLDSua($id){
@@ -42,7 +42,7 @@ class TinNhanChoController extends Controller
     }
 
     public function getGVDanhSach(){
-        $tinnhancho= TinNhanCho::orderBy('id','DESC')->get();//desc giam dan
+        $tinnhancho= TinNhanCho::orderBy('id','DESC')->paginate(5);//desc giam dan
         return view('giangvien.tinnhancho.DsTinNhanCho', ['tinnhancho'=>$tinnhancho]);
     }
     public function getGVSua($id){

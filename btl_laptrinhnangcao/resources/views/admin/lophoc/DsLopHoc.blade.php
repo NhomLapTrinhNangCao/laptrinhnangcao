@@ -14,7 +14,6 @@
                 <table class="text-center table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Tên lớp học</th>
                         <th>Khóa học</th>
                         <th>Giáo viên chủ nhiệm</th>
@@ -25,7 +24,6 @@
                     <tbody>
                     @foreach ($lophoc as $tl)
                         <tr>
-                            <td>{{$tl->id}}</td>
                             <td>{{$tl->ten_lop_hoc}}</td>
                             <td>{{$tl->khoahoc->nien_khoa}}</td>
                             <td>{{$tl->giangvien->user->name}}</td>
@@ -35,6 +33,9 @@
                     @endforeach
                     </tbody>
                 </table>
+                <div class="pagination justify-content-center">
+                    {!! $lophoc->links() !!}
+                </div>
             </div>
         </div>
     </div>

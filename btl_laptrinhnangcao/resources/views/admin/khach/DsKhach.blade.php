@@ -14,7 +14,6 @@
                 <table class="text-center table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Tên</th>
                         <th>Email</th>
                         <th>Hình</th>
@@ -25,7 +24,6 @@
                     <tbody>
                     @foreach ($user as $tl)
                         <tr>
-                            <td>{{$tl->id}}</td>
                             <td>{{$tl->name}}</td>
                             <td>{{$tl->email}}</td>
                             <td>

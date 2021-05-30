@@ -14,7 +14,6 @@
                 <table class="text-center table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Tên</th>
                         <th>Mã số</th>
                         <th>Email</th>
@@ -27,7 +26,6 @@
                     <tbody>
                     @foreach ($sinhvien as $tl)
                         <tr>
-                            <td>{{$tl->id}}</td>
                             <td>{{$tl->user->name}}</td>
                             <td>{{$tl->mssv}}</td>
                             <td>{{$tl->user->email}}</td>
