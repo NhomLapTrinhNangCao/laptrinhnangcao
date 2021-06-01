@@ -6,6 +6,8 @@ use App\Models\SinhVien;
 use App\Models\User;
 use App\Models\LopHoc;
 use App\Models\ViTri;
+use App\Models\BinhLuan;
+use App\Models\TinTuc;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -217,7 +219,7 @@ class SinhVienController extends Controller
     public function getXoa($id){
         $sinhvien = SinhVien::find($id);
         $user = User::find($sinhvien->id_user);
-        $binhluan = BinhLuan::where('id_users','=',$id);
+        $binhluan = BinhLuan::where('id_user','=',$id);
         $binhluan->delete();
         $tintuc = TinTuc::where('id_user','=',$id);
         $tintuc->delete();
@@ -369,7 +371,7 @@ class SinhVienController extends Controller
     public function getLDXoa($id){
         $sinhvien = SinhVien::find($id);
         $user = User::find($sinhvien->id_user);
-        $binhluan = BinhLuan::where('id_users','=',$id);
+        $binhluan = BinhLuan::where('id_user','=',$id);
         $binhluan->delete();
         $tintuc = TinTuc::where('id_user','=',$id);
         $tintuc->delete();
@@ -516,7 +518,7 @@ class SinhVienController extends Controller
     public function getGVXoa($id){
         $sinhvien = SinhVien::find($id);
         $user = User::find($sinhvien->id_user);
-        $binhluan = BinhLuan::where('id_users','=',$id);
+        $binhluan = BinhLuan::where('id_user','=',$id);
         $binhluan->delete();
         $tintuc = TinTuc::where('id_user','=',$id);
         $tintuc->delete();

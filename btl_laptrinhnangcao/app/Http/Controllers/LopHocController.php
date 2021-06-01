@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\GiangVien;
+use App\Models\SinhVien;
 use App\Models\LopHoc;
 use App\Models\KhoaHoc;
 use Illuminate\Http\Request;
@@ -76,6 +77,10 @@ class LopHocController extends Controller
     }
     public function getXoa($id){
         $lophoc = LopHoc::find($id);
+        if(SinhVien::where('id_lop_hoc', '=', $id)->exists())
+        {
+        return redirect('admin/lophoc/danhsach')->with('thongbao','Xóa thất bại do có sinh viên ở lớp học này');
+        }
         $lophoc -> delete();
         return redirect('admin/lophoc/danhsach');
     }

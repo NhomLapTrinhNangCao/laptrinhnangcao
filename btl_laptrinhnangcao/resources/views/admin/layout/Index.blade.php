@@ -189,7 +189,7 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Thông tin
                                 </a>
-                                <a class="dropdown-item" href="admin/giangvien/sua/{{Auth::user()->id}}">
+                                <a class="dropdown-item" href="admin/giangvien/sua/{{Auth::user()->giangvien->id}}">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Cài đặt
                                 </a>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\GiangVien;
 use App\Models\User;
 use App\Models\ViTri;
+use App\Models\BinhLuan;
+use App\Models\TinTuc;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -156,7 +158,7 @@ class GiangVienController extends Controller
     public function getXoa($id){
         $giangvien = GiangVien::find($id);
         $user = User::find($giangvien->id_user);
-        $binhluan = BinhLuan::where('id_users','=',$id);
+        $binhluan = BinhLuan::where('id_user','=',$id);
         $binhluan->delete();
         $tintuc = TinTuc::where('id_user','=',$id);
         $tintuc->delete();

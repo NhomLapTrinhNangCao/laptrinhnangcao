@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\LoaiTin;
-
+use App\Models\TinTuc;
 class LoaiTinController extends Controller
 {
     public function getDanhSach()
@@ -57,6 +57,10 @@ class LoaiTinController extends Controller
     }
     public function getXoa($id){
         $loaitin = LoaiTin::find($id);
+        if(TinTuc::where('id_loai_tin', '=', $id)->exists())
+        {
+        return redirect('admin/loaitin/danhsach')->with('thongbao','Xóa thất bại do có tin tức ở thể loại này');
+        }
         $loaitin -> delete();
         return redirect('admin/loaitin/danhsach');
     }

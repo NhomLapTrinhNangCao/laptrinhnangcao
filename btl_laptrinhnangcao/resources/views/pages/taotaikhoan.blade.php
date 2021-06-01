@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" style="height: 2.9rem; border-radius: 10rem" type="file" name="hinh" >
+                                <input class="form-control" style="height: 2.9rem; border-radius: 10rem" type="file" name="hinh" placeholder="Nhập hình đại diện" >
                             </div>
                             <input type="submit" value="Xác nhận" class="btn btn-primary btn-user btn-block" />
                         </form>

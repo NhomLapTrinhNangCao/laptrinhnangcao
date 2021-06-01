@@ -123,7 +123,7 @@ class KhachController extends Controller
     }
     public function getXoa($id){
         $user = User::find($id);
-        $binhluan = BinhLuan::where('id_users','=',$id);
+        $binhluan = BinhLuan::where('id_user','=',$id);
         $binhluan->delete();
         $tintuc = TinTuc::where('id_user','=',$id);
         $tintuc->delete();

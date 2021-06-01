@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\KhoaHoc;
+use App\Models\LopHoc;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
@@ -56,7 +57,11 @@ class KhoaHocController extends Controller
     }
     public function getXoa($id){
         $khoahoc = KhoaHoc::find($id);
+        if(LopHoc::where('id_khoa_hoc', '=', $id)->exists())
+        {
+        return redirect('admin/khoahoc/danhsach')->with('thongbao','Xóa thất bại do có lớp học ở khóa học này');
+        }
         $khoahoc -> delete();
-        return redirect('admin/khoahoc/danhsach');
+        return redirect('admin/khoahoc/danhsach')->with('thongbao','Xóa thành công');
     }
 }

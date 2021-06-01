@@ -23,8 +23,8 @@
                     @foreach ($khoahoc as $tl)
                         <tr>
                             <td>{{$tl->nien_khoa}}</td>
-                            <td><a href="admin/vitri/xoa/{{$tl->id}}"><i class="far fa-trash-alt"></i></a></td>
-                            <td><a href="admin/vitri/sua/{{$tl->id}}"><i class="far fa-edit"></i></a></td>
+                            <td><a href="admin/khoahoc/xoa/{{$tl->id}}"><i class="far fa-trash-alt"></i></a></td>
+                            <td><a href="admin/khoahoc/sua/{{$tl->id}}"><i class="far fa-edit"></i></a></td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -32,5 +32,22 @@
             </div>
         </div>
     </div>
+    @if(count($errors)>0)
+        <div class="alert alert-danger">
+            @foreach($errors->all() as $err)
+                {{$err}}<br>
+            @endforeach
+        </div>
+    @endif
+    @if(session('thongbao'))
+        <div class="alert alert-success">
+            {{session('thongbao')}}
+        </div>
+    @endif
+    @if(session('loi'))
+        <div class="alert alert-success">
+            {{session('loi')}}
+        </div>
+    @endif
 @endsection
 
